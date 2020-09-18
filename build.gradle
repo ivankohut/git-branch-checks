@@ -1,0 +1,46 @@
+
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.12.0'
+}
+
+ext {
+    junitVersion = '5.6.2'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+pluginBundle {
+    website = 'https://github.com/ivankohut/gradle-branch-checks'
+    vcsUrl = 'https://github.com/ivankohut/gradle-branch-checks.git'
+    tags = ['style', 'git']
+}
+
+gradlePlugin {
+    plugins {
+        gradleBranchChecksPlugin {
+            id = 'com.github.ivankohut.git-branch-checks'
+            displayName = 'Git Branch Checks Plugin'
+            description = 'Validation of some properties of current git branch'
+            implementationClass = 'com.github.ivankohut.gitbranchchecks.GitBranchChecksPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:5.9.0.202009080501-r'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation 'org.assertj:assertj-core:3.17.1'
+}
+
+group = 'com.github.ivankohut'
+version = "0.0.1"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
