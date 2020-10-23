@@ -1,17 +1,16 @@
 package com.github.ivankohut.gitbranchchecks;
 
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.lib.Repository;
+import com.github.ivankohut.gitbranchchecks.git.GitCurrentBranch;
+import com.github.ivankohut.gitbranchchecks.git.GitLog;
+import com.github.ivankohut.gitbranchchecks.git.WithGit;
+import org.cactoos.text.TextOf;
 import org.gradle.api.DefaultTask;
-import org.gradle.api.GradleException;
 import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class CheckCommitMessages extends DefaultTask {
@@ -42,14 +41,12 @@ public class CheckCommitMessages extends DefaultTask {
 
     @TaskAction
     public void check() {
-        try (Git git = Git.open(getProject().getRootDir())) {
-            Repository repository = git.getRepository();
-            String branchName = repository.getBranch();
-            git.log().addRange(repository.resolve("master"), repository.resolve(branchName)).call().forEach(
-                    commit -> new ValidatedText("commit message", pattern.get(), commit.getShortMessage()).toString()
-            );
-        } catch (IOException | GitAPIException e) {
-            throw new GradleException(e.getMessage(), e);
-        }
+        new WithGit(
+                getProject().getRootDir(),
+                git -> new GitLog(git, new SimpleBranch("master"), new GitCurrentBranch(git)).forEach(
+                        commit -> new ValidatedText("commit message", pattern.get(), commit.getShortMessage()).asString()
+                )
+        ).run();
     }
 }
+
