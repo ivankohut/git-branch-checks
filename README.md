@@ -23,7 +23,23 @@ gitBranchChecks {
 }
 ```
 
+Executing checks as part of `check` task:
+```groovy
+check {
+    dependsOn checkBranchName, checkCommitMessages, checkNoMergeCommits
+}
+```
+
 Disabling unwanted checks:
 ```groovy
 checkNoMergeCommits.enabled = false
+```
+
+In case you run your builds on Travis CI, add `git fetch origin master:master` command to `script` part of `travis.yml` before checks execution:  
+```yaml
+...
+script:
+  - git fetch origin master:master
+  - ./gradlew --info checkBranchName checkCommitMessages checkNoMergeCommits
+...
 ```
