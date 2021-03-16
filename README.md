@@ -11,7 +11,7 @@ validating branches during CI build. Available checks (as *Gradle* tasks):
 In your `build.gradle` file add:
 ```groovy
 plugins {
-    id 'com.github.ivankohut.git-branch-checks' version '0.0.1'
+    id 'com.github.ivankohut.git-branch-checks' version '0.0.3'
 }
 ```
 
