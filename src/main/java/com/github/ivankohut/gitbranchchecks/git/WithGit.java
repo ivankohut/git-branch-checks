@@ -19,7 +19,7 @@ public class WithGit implements Runnable {
 
     @Override
     public void run() {
-        try (Git git = Git.open(directory)) {
+        try (var git = Git.open(directory)) {
             operation.accept(git);
         } catch (IOException e) {
             throw new GradleException(e.getMessage(), e);

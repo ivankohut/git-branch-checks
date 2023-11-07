@@ -24,7 +24,7 @@ public class GitLog implements Iterable<RevCommit> {
 
     @Override
     public Iterator<RevCommit> iterator() {
-        Repository repository = git.getRepository();
+        var repository = git.getRepository();
         try {
             return git.log().addRange(repository.resolve(from.name()), repository.resolve(to.name())).call().iterator();
         } catch (IOException | GitAPIException e) {

@@ -13,9 +13,9 @@ public class GitBranchChecksPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        GitBranchChecksPluginExtension extension = project.getExtensions().create("gitBranchChecks", GitBranchChecksPluginExtension.class, project);
-        TaskContainer tasks = project.getTasks();
-        String headCommitId = headCommitId(project.getRootDir());
+        var extension = project.getExtensions().create("gitBranchChecks", GitBranchChecksPluginExtension.class, project);
+        var tasks = project.getTasks();
+        var headCommitId = headCommitId(project.getRootDir());
         tasks.register("checkBranchName", CheckBranchName.class, task -> {
             task.getPattern().set(extension.getBranchPattern());
             task.getCommitId().set(headCommitId);
@@ -28,7 +28,7 @@ public class GitBranchChecksPlugin implements Plugin<Project> {
     }
 
     private static String headCommitId(File rootDir) {
-        try (Git git = Git.open(rootDir)) {
+        try (var git = Git.open(rootDir)) {
             return git.getRepository().findRef("HEAD").getObjectId().getName();
         } catch (IOException e) {
             throw new GradleException(e.getMessage(), e);

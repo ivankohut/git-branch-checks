@@ -18,9 +18,9 @@ public class NonHeadBranch implements Branch {
 
     @Override
     public String name() {
-        String branchName = branch.name();
+        var branchName = branch.name();
         if (HEAD_BRANCH_NAME.equals(branchName)) {
-            Iterator<String> iterator = defaultName.iterator();
+            var iterator = defaultName.iterator();
             if (iterator.hasNext()) {
                 return iterator.next();
             }

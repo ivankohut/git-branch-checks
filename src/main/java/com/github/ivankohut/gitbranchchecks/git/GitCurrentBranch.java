@@ -19,8 +19,8 @@ public class GitCurrentBranch implements Branch {
     @Override
     public String name() {
         try {
-            String branchName = git.getRepository().getBranch();
-            String commitId = git.log().setMaxCount(1).call().iterator().next().getId().getName();
+            var branchName = git.getRepository().getBranch();
+            var commitId = git.log().setMaxCount(1).call().iterator().next().getId().getName();
             if (commitId.equals(branchName)) {
                 return HEAD_BRANCH_NAME;
             }

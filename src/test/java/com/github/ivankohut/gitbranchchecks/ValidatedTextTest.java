@@ -12,17 +12,17 @@ class ValidatedTextTest {
 
     @Test
     void givenTextIfItMatchesGivenPattern() {
-        String text = "aaa";
-        ValidatedText sut = new ValidatedText("test", Pattern.compile("a*"), text);
+        var text = "aaa";
+        var sut = new ValidatedText("test", Pattern.compile("a*"), text);
         // exercise
-        String result = sut.toString();
+        var result = sut.toString();
         // verify
         assertThat(result).isEqualTo(text);
     }
 
     @Test
     void gradleExceptionIfTheTextDoesNotMatchGivenPattern() {
-        ValidatedText sut = new ValidatedText("test", Pattern.compile("a*"), "aab");
+        var sut = new ValidatedText("test", Pattern.compile("a*"), "aab");
         // exercise
         // verify
         assertThatThrownBy(sut::toString)

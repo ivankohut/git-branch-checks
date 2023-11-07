@@ -13,7 +13,7 @@ public class EnvironmentVariable implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        String value = System.getenv(name);
+        var value = System.getenv(name);
         if (value == null) {
             return Collections.emptyIterator();
         }

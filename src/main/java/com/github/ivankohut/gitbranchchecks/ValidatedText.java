@@ -25,7 +25,7 @@ public class ValidatedText implements Text {
 
     @Override
     public String asString() {
-        String textAsString = text.asString();
+        var textAsString = text.asString();
         if (!pattern.matcher(textAsString).matches()) {
             throw new GradleException("Illegal " + name + ": " + textAsString + "\n  Expected pattern is: " + pattern.pattern());
         }

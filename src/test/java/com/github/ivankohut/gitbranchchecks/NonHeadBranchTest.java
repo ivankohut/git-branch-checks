@@ -18,16 +18,16 @@ class NonHeadBranchTest {
             "nonHEAD, default, nonHEAD"
     })
     void givenBranchInNonHeadOtherwiseDefault(String branch, String defaultBranch, String expected) {
-        NonHeadBranch sut = new NonHeadBranch(new SimpleBranch(branch), Collections.singleton(defaultBranch));
+        var sut = new NonHeadBranch(new SimpleBranch(branch), Collections.singleton(defaultBranch));
         // exercise
-        String result = sut.name();
+        var result = sut.name();
         // verify
         assertThat(result).isEqualTo(expected);
     }
 
     @Test
     void exceptionIfHeadAndNoDefaultBranchGiven() {
-        NonHeadBranch sut = new NonHeadBranch(new SimpleBranch("HEAD"), Collections.emptyList());
+        var sut = new NonHeadBranch(new SimpleBranch("HEAD"), Collections.emptyList());
         // exercise
         // verify
         assertThatThrownBy(sut::name)
