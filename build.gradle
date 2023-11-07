@@ -6,7 +6,7 @@ plugins {
 }
 
 ext {
-    junitVersion = '5.7.2'
+    junitVersion = '5.10.1'
 }
 
 repositories {
@@ -31,13 +31,13 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation 'org.eclipse.jgit:org.eclipse.jgit:5.13.0.202109080827-r'
-    implementation 'org.cactoos:cactoos:0.50'
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:6.7.0.202309050840-r'
+    implementation 'org.cactoos:cactoos:0.55.0'
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
-    testImplementation 'org.assertj:assertj-core:3.20.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
 }
 
 group = 'com.github.ivankohut'
