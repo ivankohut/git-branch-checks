@@ -3,11 +3,13 @@ plugins {
     id 'java-gradle-plugin'
     id 'maven-publish'
     id 'com.gradle.plugin-publish' version '1.2.1'
+    id 'codenarc'
     id 'de.obqo.decycle' version '1.1.0'
 }
 
 ext {
     junitVersion = '5.10.1'
+    codenarcVersion = '3.3.0'
 }
 
 repositories {
@@ -46,3 +48,22 @@ version = '0.0.4'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
+
+codenarc {
+    toolVersion codenarcVersion
+}
+
+task codenarcGradle(type: CodeNarc) {
+    compilationClasspath += buildscript.configurations.classpath
+    configFile = file('config/codenarc/codenarc-gradle.groovy')
+    source = rootDir
+    include '*.gradle', 'config/codenarc/*.groovy'
+    ignoreFailures false
+    maxPriority1Violations 0
+    maxPriority2Violations 0
+    maxPriority3Violations 0
+}
+
+check {
+    dependsOn codenarcGradle
+}
