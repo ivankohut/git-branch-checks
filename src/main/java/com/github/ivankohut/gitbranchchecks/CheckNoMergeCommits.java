@@ -1,5 +1,6 @@
 package com.github.ivankohut.gitbranchchecks;
 
+import com.github.ivankohut.gitbranchchecks.common.SimpleBranch;
 import com.github.ivankohut.gitbranchchecks.git.GitCurrentBranch;
 import com.github.ivankohut.gitbranchchecks.git.GitLog;
 import com.github.ivankohut.gitbranchchecks.git.WithGit;

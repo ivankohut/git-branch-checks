@@ -1,9 +1,9 @@
 package com.github.ivankohut.gitbranchchecks;
 
+import com.github.ivankohut.gitbranchchecks.common.SimpleBranch;
 import com.github.ivankohut.gitbranchchecks.git.GitCurrentBranch;
 import com.github.ivankohut.gitbranchchecks.git.GitLog;
 import com.github.ivankohut.gitbranchchecks.git.WithGit;
-import org.cactoos.text.TextOf;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.Input;

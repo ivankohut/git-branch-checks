@@ -1,4 +1,4 @@
-package com.github.ivankohut.gitbranchchecks;
+package com.github.ivankohut.gitbranchchecks.common;
 
 public class SimpleBranch implements Branch {
 

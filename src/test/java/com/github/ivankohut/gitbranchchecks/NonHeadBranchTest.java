@@ -1,5 +1,6 @@
 package com.github.ivankohut.gitbranchchecks;
 
+import com.github.ivankohut.gitbranchchecks.common.SimpleBranch;
 import org.gradle.api.GradleException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

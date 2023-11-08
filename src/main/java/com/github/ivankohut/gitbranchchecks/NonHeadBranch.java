@@ -1,8 +1,7 @@
 package com.github.ivankohut.gitbranchchecks;
 
+import com.github.ivankohut.gitbranchchecks.common.Branch;
 import org.gradle.api.GradleException;
-
-import java.util.Iterator;
 
 public class NonHeadBranch implements Branch {
 

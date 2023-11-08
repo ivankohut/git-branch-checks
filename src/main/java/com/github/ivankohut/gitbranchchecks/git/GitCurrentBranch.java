@@ -1,6 +1,6 @@
 package com.github.ivankohut.gitbranchchecks.git;
 
-import com.github.ivankohut.gitbranchchecks.Branch;
+import com.github.ivankohut.gitbranchchecks.common.Branch;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.gradle.api.GradleException;
