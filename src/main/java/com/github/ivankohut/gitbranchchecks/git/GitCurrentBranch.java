@@ -16,6 +16,7 @@ public class GitCurrentBranch implements Branch {
     public GitCurrentBranch(Git git) {
         this.git = git;
     }
+
     @Override
     public String name() {
         try {
